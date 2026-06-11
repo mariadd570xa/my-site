@@ -2,17 +2,22 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #f7f7f7;           /* тёмно-серый текст */
+    color: #ffffff;           /* тёмно-серый текст */
     background-color: #884d72f1; /* белый фон */
     line-height: 1.5;         /* межстрочный интервал */
     margin: 0;
     padding: 0;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+
 }
 
 /* Заголовки */
 h1 {
     font-size: 36px;
-    color: #fdfdfd;
+    color: #ffffff;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -38,6 +43,7 @@ h4 {
     color: #fffcfc;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 
@@ -46,7 +52,8 @@ h4 {
 header {
     background-color: #000000;    /* тёмно-синий фон */
     padding: 15px 20px;
-    
+    text-align: left;
+    z-index: 100;
 }
 
 header a {
@@ -59,6 +66,7 @@ header a {
 /* Логотип */
 header > div > a:first-child {
     font-size: 24px;
+   
 }
 
 /* Список навигации */
@@ -147,14 +155,14 @@ nav ul li a:hover {
 /* Подвал */
 footer {
     background-color: #000000;
-    color: #ecf0f1;
+    color: #000000;
     padding: 30px 20px 20px;
     margin-top: 40px;
     
 }
 
 footer a {
-    color: #ecf0f1;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -369,4 +377,127 @@ label {
     font-weight: 600;
     margin-bottom: 8px;
 }
+
+
+
+
+
+
+
+.hero {
+    background: linear-gradient(135deg, rgb(104, 83, 83) 0%, rgba(0, 0, 0, 0.973) 100%), url('https://via.placeholder.com/1920x600?text=Hero+Background');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.hero h1, .hero p {
+    color: rgb(0, 0, 0);
+}
+
+.hero .btn {
+    background-color: #ffffff;
+}
+
+.hero .btn:hover {
+    background-color: #ffffff;
+}
+
+.product-card:hover {
+    background: linear-gradient(to bottom, #0e0d0d, #fafafa);
+    box-shadow: 0 10px 25px rgb(255, 255, 255);
+}
+
+/* Первый пункт меню */
+nav ul li:first-child a {
+    font-weight: bold;
+}
+
+/* Последний пункт меню */
+nav ul li:last-child a {
+    color: #ffffff;
+}
+
+/* Для каждого второго пункта (чётного) */
+nav ul li:nth-child(even) a:hover {
+    color: #ffffff;
+}
+
+
+.btn, button, .button {
+    transition: all 0.25s ease;
+}
+
+.btn:active, button:active, .button:active {
+    transform: scale(0.97);   /* эффект нажатия */
+}
+
+.product-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.product-card:hover .card-img {
+    transform: scale(1.02);
+}
+
+
+footer a {
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #eb8ac3;
+    text-decoration: underline;
+}
+
+footer a:active {
+    color: #eb8ac3;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #eb8ac3;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #fffef7;
+}
+
+
+.product-card:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.product-card:nth-child(even) {
+    background-color: #fafafa;
+}
+
+footer {
+    background: linear-gradient(135deg, #000000 0%, #582a45 100%);
+}
+
+section {
+    transition: opacity 0.5s;
+}
+
+section:hover {
+    opacity: 0.98;
+}
+
+.nav-list a.active {
+    color: #eb8ac3;
+    border-bottom: 2px solid #eb8ac3;
+    padding-bottom: 5px;
+}
+
+
 
