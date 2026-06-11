@@ -2,7 +2,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #fffdfd;           /* тёмно-серый текст */
+    color: #f7f7f7;           /* тёмно-серый текст */
     background-color: #884d72f1; /* белый фон */
     line-height: 1.5;         /* межстрочный интервал */
     margin: 0;
@@ -118,18 +118,31 @@ nav ul li a:hover {
     margin: 10px 0;
 }
 
-.feature-card {
-    background-color: #f0f4f8;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 20px;
+.cards{
+   
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:30px;}
+
+.card{
+
+    background:#aa6e94f1;
+    padding:20px;
+    border-radius:18px;
+    text-align:center;
+    
 }
 
-.feature-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
+.card img{
+     height: 200px;
+    width: 100%;
+    object-fit:cover;
+    border-radius:12px;}
+
+.card h3{
+    margin:15px 0;}
+
 
 /* Подвал */
 footer {
@@ -212,4 +225,148 @@ input:focus, textarea:focus, select:focus {
 
 
 
+
+
+
+
+
+/* Универсальное правило — все элементы учитывают padding и border в ширине */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;   /* центрирование блока */
+    padding: 0 20px;  /* внутренние отступы по бокам */
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  /* тень при наведении */
+}
+
+.feature-card {
+    background-color: #f0f4f8;
+    padding: 25px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn, button, .button {
+    display: inline-block;
+    background-color: #070707;
+    color: white;
+    padding: 12px 30px;        /* увеличили отступы */
+    border: none;              /* убираем стандартную рамку у кнопок */
+    border-radius: 30px;       /* более скруглённые углы */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover, button:hover, .button:hover {
+    background-color: #2980b9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);  /* свечение вокруг поля */
+}
+
+header {
+    background-color: #050505;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* тень под шапкой */
+    position: sticky;
+    top: 0;
+}
+
+footer {
+    background-color: #000000;
+    color: #ecf0f1;
+    padding: 40px 20px 25px;
+    margin-top: 50px;
+}
+
+.footer-col {
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    padding: 60px 0;
+    margin-top: 0;
+}
+
+.contacts-info {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
+}
+
+form {
+background-color: #aa6e94f1;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
 
