@@ -14,12 +14,32 @@ body {
 
 }
 
+.main{
+padding: 30px;
+
+
+
+}
+
+.df1{
+    padding: 30px;
+   
+}
+.s1{
+align-items: start;
+justify-content: start;
+ text-align: center;  
+}
+
+
+
+
 /* Заголовки */
 h1 {
     font-size: 36px;
     color: #ffffff;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
@@ -52,9 +72,22 @@ h4 {
 header {
     background-color: #000000;    /* тёмно-синий фон */
     padding: 15px 20px;
-    text-align: left;
+    position: sticky;
+    top: 0;
     z-index: 100;
+
+    background: linear-gradient(135deg, #000000 0%, #582a45 100%);
+    
 }
+
+header .container {
+    display: flex;
+    justify-content: space-between;   /* Логотип слева, меню справа */
+    align-items: center;              /* Вертикальное выравнивание по центру */
+    flex-wrap: wrap;                 /* При сужении экрана меню уйдёт вниз */
+    gap: 15px;
+}
+
 
 header a {
     color: white;
@@ -66,29 +99,43 @@ header a {
 /* Логотип */
 header > div > a:first-child {
     font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+
    
 }
 
 /* Список навигации */
 nav ul {
-    list-style: none;              /* убираем маркеры списка */
+    display: flex;
+    list-style: none;
+    gap: 25px;
     margin: 0;
     padding: 0;
+
+    background: linear-gradient(135deg, #000000 0%, #582a45 100%);
+    
 }
 
 nav ul li {
-    display: inline-block;         /* располагаем пункты меню в строку */
-    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+
+    
 }
 
 nav ul li a:hover {
-    text-decoration: underline;    /* подчёркивание при наведении */
+    text-decoration: underline; 
+    background: linear-gradient(135deg, #000000 0%, #582a45 100%);   /* подчёркивание при наведении */
 }
 
 /* Кнопка */
 .btn, button, .button {
     display: inline-block;
-    background-color: #0f0f0f;     /* голубой фон */
+    background-color: #ffffff;     /* голубой фон */
     color: white;
     padding: 10px 25px;
     border-radius: 5px;            /* закруглённые углы */
@@ -96,6 +143,7 @@ nav ul li a:hover {
     font-weight: bold;
     transition: 0.3s;              /* плавность при наведении */
 }
+
 
 .btn:hover, button:hover, .button:hover {
     background-color: #000000;     /* более тёмный при наведении */
@@ -110,10 +158,12 @@ nav ul li a:hover {
     padding: 15px;
     margin-bottom: 20px;
     text-align: center;
+    
 }
 
+
 .card-img {
-    background-color: #e0e0e0;
+    background-color: #000000;
     height: 150px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -132,6 +182,7 @@ nav ul li a:hover {
     grid-template-columns:repeat(3,1fr);
     gap:25px;
     margin-top:30px;}
+    
 
 .card{
 
@@ -139,6 +190,7 @@ nav ul li a:hover {
     padding:20px;
     border-radius:18px;
     text-align:center;
+    background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
     
 }
 
@@ -146,10 +198,15 @@ nav ul li a:hover {
      height: 200px;
     width: 100%;
     object-fit:cover;
-    border-radius:12px;}
+    border-radius:12px;
+}
 
 .card h3{
-    margin:15px 0;}
+    margin:15px 0;
+    background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
+border-radius: 5px;            /* закруглённые углы */
+    text-decoration: none;
+    font-weight: bold;}
 
 
 /* Подвал */
@@ -201,6 +258,7 @@ form {
     border-radius: 5px;
     max-width: 500px;
     margin: 0 auto;
+    background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
 }
 
 form div {
@@ -271,7 +329,7 @@ input:focus, textarea:focus, select:focus {
     border-radius: 12px;
     text-align: center;
     margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -384,7 +442,7 @@ label {
 
 
 
-.hero {
+.body {
     background: linear-gradient(135deg, rgb(104, 83, 83) 0%, rgba(0, 0, 0, 0.973) 100%), url('https://via.placeholder.com/1920x600?text=Hero+Background');
     background-size: cover;
     background-position: center;
@@ -393,15 +451,15 @@ label {
     color: rgb(0, 0, 0);
 }
 
-.hero h1, .hero p {
+.body h1, .hero p {
     color: rgb(0, 0, 0);
 }
 
-.hero .btn {
+.body .btn {
     background-color: #ffffff;
 }
 
-.hero .btn:hover {
+.body .btn:hover {
     background-color: #ffffff;
 }
 
@@ -467,8 +525,8 @@ footer a:active {
 
 input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: #eb8ac3;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
     background-color: #fffef7;
 }
 
@@ -494,8 +552,8 @@ section:hover {
 }
 
 .nav-list a.active {
-    color: #eb8ac3;
-    border-bottom: 2px solid #eb8ac3;
+    color: #722e56;
+    border-bottom: 2px solid #fcfcfc;
     padding-bottom: 5px;
 }
 
