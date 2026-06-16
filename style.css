@@ -75,7 +75,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);
     
 }
@@ -90,7 +89,6 @@ header .container {
 
 
 header a {
-    color: white;
     text-decoration: none;         /* убираем подчёркивание у ссылок */
     font-weight: bold;
 }
@@ -129,6 +127,7 @@ nav ul li {
 
 nav ul li a:hover {
     text-decoration: underline; 
+    color: #ffffff;
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);   /* подчёркивание при наведении */
 }
 
@@ -208,15 +207,96 @@ border-radius: 5px;            /* закруглённые углы */
     text-decoration: none;
     font-weight: bold;}
 
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .product-card .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card .price {
+        margin-top: auto;
+    }
+    
+
+/* Сетка преимуществ на Flexbox */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+    background-color: #f0f4f8;
+    padding: 25px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
 
 /* Подвал */
 footer {
     background-color: #000000;
     color: #000000;
-    padding: 30px 20px 20px;
-    margin-top: 40px;
+    padding: 40px 20px 25px;
+    margin-top: 50px;
+
     
 }
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;                         /* Равномерное растяжение колонок */
+    min-width: 180px;
+}
+
+.footer-col h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-col p, .footer-col a {
+    color: #bdc3c7;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-col a:hover {
+    color: #f1c40f;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 20px;
+    border-top: 1px solid #3d566e;
+    font-size: 14px;
+    color: #95a5a6;
+}
+
 
 footer a {
     color: #000000;
@@ -236,13 +316,22 @@ footer a:hover {
 /* Контакты */
 .contacts-info {
     background-color: #131212;
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 12px;
     margin-bottom: 30px;
+
 }
 
 .contacts-info div {
     margin-bottom: 15px;
+    flex: 1;
+    min-width: 150px;
+
 }
 
 .map iframe {
