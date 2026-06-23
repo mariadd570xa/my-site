@@ -14,6 +14,37 @@ body {
 
 }
 
+.body h1, .hero p {
+    color: rgb(0, 0, 0);
+}
+
+.body .btn {
+    background-color: #ffffff;
+}
+
+.body .btn:hover {
+    background-color: #ffffff;
+}
+
+/* Основной макет главной страницы через grid-areas */
+.page-layout {
+    display: grid;
+    grid-template-areas:
+        "hero hero"
+        "features features"
+        "popular sidebar"
+        "gallery gallery";
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.features-section { grid-area: features; }
+.popular-section { grid-area: popular; }
+.sidebar-section { grid-area: sidebar; }
+.gallery-section { grid-area: gallery; }
+
+
+
 .main{
 padding: 30px;
 
@@ -76,6 +107,7 @@ header {
     top: 0;
     z-index: 100;
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* тень под шапкой */
     
 }
 
@@ -131,23 +163,48 @@ nav ul li a:hover {
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);   /* подчёркивание при наведении */
 }
 
+/* Первый пункт меню */
+nav ul li:first-child a {
+    font-weight: bold;
+}
+
+/* Последний пункт меню */
+nav ul li:last-child a {
+    color: #ffffff;
+}
+
+/* Для каждого второго пункта (чётного) */
+nav ul li:nth-child(even) a:hover {
+    color: #ffffff;
+}
+
+
+
 /* Кнопка */
 .btn, button, .button {
-    display: inline-block;
-    background-color: #ffffff;     /* голубой фон */
+   display: inline-block;
+    background-color: #070707;
     color: white;
-    padding: 10px 25px;
-    border-radius: 5px;            /* закруглённые углы */
+    padding: 12px 30px;        /* увеличили отступы */
+    border: none;              /* убираем стандартную рамку у кнопок */
+    border-radius: 30px;       /* более скруглённые углы */
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;              /* плавность при наведении */
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
 .btn:hover, button:hover, .button:hover {
-    background-color: #000000;     /* более тёмный при наведении */
-    cursor: pointer;
+    background-color: #53214b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+.btn:active, button:active, .button:active {
+    transform: scale(0.97);   /* эффект нажатия */
+}
+
 
 /* Карточки товаров/услуг */
 .product-card {
@@ -157,7 +214,12 @@ nav ul li a:hover {
     padding: 15px;
     margin-bottom: 20px;
     text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
     
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
 
@@ -166,7 +228,21 @@ nav ul li a:hover {
     height: 150px;
     border-radius: 5px;
     margin-bottom: 10px;
+    transition: transform 0.3s;
+    overflow: hidden;
 }
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+
+.product-card:hover .card-img {
+    transform: scale(1.02);
+}
+
 
 .price {
     font-size: 20px;
@@ -177,10 +253,11 @@ nav ul li a:hover {
 
 .cards{
    
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-    margin-top:30px;}
+     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
     
 
 .card{
@@ -198,6 +275,7 @@ nav ul li a:hover {
     width: 100%;
     object-fit:cover;
     border-radius:12px;
+
 }
 
 .card h3{
@@ -207,30 +285,50 @@ border-radius: 5px;            /* закруглённые углы */
     text-decoration: none;
     font-weight: bold;}
 
+    .popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+
     .product-card {
         display: flex;
         flex-direction: column;
         height: 100%;
+         display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
     }
+
+
     
-    .product-card .card-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
+    /* Чтобы кнопка была внизу */
+.product-card .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
     
-    .product-card .price {
-        margin-top: auto;
-    }
-    
+   .product-card .price {
+    margin-top: auto;
+}
 
 /* Сетка преимуществ на Flexbox */
 .features-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
+
 }
+
+
 
 .feature-card {
     flex: 1;
@@ -241,10 +339,16 @@ border-radius: 5px;            /* закруглённые углы */
     border-radius: 12px;
     text-align: center;
     transition: box-shadow 0.2s;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+
 }
 
 .feature-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -252,13 +356,27 @@ border-radius: 5px;            /* закруглённые углы */
 
 /* Подвал */
 footer {
-    background-color: #000000;
-    color: #000000;
+    background-color: #ffffff;
+    color: #ffffff;
     padding: 40px 20px 25px;
     margin-top: 50px;
 
     
 }
+
+footer a {
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #eb8ac3;
+    text-decoration: underline;
+}
+
+footer a:active {
+    color: #eb8ac3;
+}
+
 
 footer .container {
     display: flex;
@@ -268,8 +386,7 @@ footer .container {
 }
 
 .footer-col {
-    flex: 1;                         /* Равномерное растяжение колонок */
-    min-width: 180px;
+    margin-bottom: 20px;
 }
 
 .footer-col h4 {
@@ -285,7 +402,7 @@ footer .container {
 }
 
 .footer-col a:hover {
-    color: #f1c40f;
+    color: #ffffff;
 }
 
 .copyright {
@@ -296,6 +413,30 @@ footer .container {
     font-size: 14px;
     color: #95a5a6;
 }
+
+
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-grid a {
+    background-color: #ffffff;
+    padding: 8px 12px;
+    text-align: center;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.social-grid a:hover {
+    background-color: #aa6e94f1;
+    color: #000000;
+}
+
+
 
 
 footer a {
@@ -315,15 +456,12 @@ footer a:hover {
 
 /* Контакты */
 .contacts-info {
-    background-color: #131212;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
 
 }
 
@@ -342,24 +480,25 @@ footer a:hover {
 
 /* Форма обратной связи */
 form {
-    background-color: #aa6e94f1;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 500px;
+   background-color: #aa6e94f1;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 600px;
     margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
     background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
 }
 
 form div {
-    margin-bottom: 15px;
-    margin: 10px;
+     margin-bottom: 20px;
     
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 input, textarea, select {
@@ -373,16 +512,10 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: #0d0d0e;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #fffef7;
 }
-
-
-
-
-
-
-
-
 
 
 /* Универсальное правило — все элементы учитывают padding и border в ширине */
@@ -398,53 +531,6 @@ input:focus, textarea:focus, select:focus {
     padding: 0 20px;  /* внутренние отступы по бокам */
 }
 
-.product-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 25px;
-    text-align: center;
-    transition: box-shadow 0.3s;
-}
-
-.product-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  /* тень при наведении */
-}
-
-.feature-card {
-    background-color: #f0f4f8;
-    padding: 25px 20px;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-.btn, button, .button {
-    display: inline-block;
-    background-color: #070707;
-    color: white;
-    padding: 12px 30px;        /* увеличили отступы */
-    border: none;              /* убираем стандартную рамку у кнопок */
-    border-radius: 30px;       /* более скруглённые углы */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: all 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover, button:hover, .button:hover {
-    background-color: #2980b9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
 
 input, textarea, select {
     width: 100%;
@@ -455,161 +541,10 @@ input, textarea, select {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);  /* свечение вокруг поля */
-}
-
-header {
-    background-color: #050505;
-    padding: 15px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* тень под шапкой */
-    position: sticky;
-    top: 0;
-}
-
-footer {
-    background-color: #000000;
-    color: #ecf0f1;
-    padding: 40px 20px 25px;
-    margin-top: 50px;
-}
-
-.footer-col {
-    margin-bottom: 20px;
-}
-
-.footer-col h4 {
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
 section {
     margin-top: 40px;
     margin-bottom: 40px;
-}
-
-.hero {
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-    padding: 60px 0;
-    margin-top: 0;
-}
-
-.contacts-info {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #eeeeee;
-}
-
-form {
-background-color: #aa6e94f1;
-    padding: 30px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #000000;
-}
-
-form div {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-
-
-
-
-
-
-.body {
-    background: linear-gradient(135deg, rgb(104, 83, 83) 0%, rgba(0, 0, 0, 0.973) 100%), url('https://via.placeholder.com/1920x600?text=Hero+Background');
-    background-size: cover;
-    background-position: center;
-    padding: 80px 0;
-    text-align: center;
-    color: rgb(0, 0, 0);
-}
-
-.body h1, .hero p {
-    color: rgb(0, 0, 0);
-}
-
-.body .btn {
-    background-color: #ffffff;
-}
-
-.body .btn:hover {
-    background-color: #ffffff;
-}
-
-.product-card:hover {
-    background: linear-gradient(to bottom, #0e0d0d, #fafafa);
-    box-shadow: 0 10px 25px rgb(255, 255, 255);
-}
-
-/* Первый пункт меню */
-nav ul li:first-child a {
-    font-weight: bold;
-}
-
-/* Последний пункт меню */
-nav ul li:last-child a {
-    color: #ffffff;
-}
-
-/* Для каждого второго пункта (чётного) */
-nav ul li:nth-child(even) a:hover {
-    color: #ffffff;
-}
-
-
-.btn, button, .button {
-    transition: all 0.25s ease;
-}
-
-.btn:active, button:active, .button:active {
-    transform: scale(0.97);   /* эффект нажатия */
-}
-
-.product-card {
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.card-img {
-    transition: transform 0.3s;
-    overflow: hidden;
-}
-
-.product-card:hover .card-img {
-    transform: scale(1.02);
-}
-
-
-footer a {
-    transition: color 0.2s;
-}
-
-footer a:hover {
-    color: #eb8ac3;
-    text-decoration: underline;
-}
-
-footer a:active {
-    color: #eb8ac3;
+    transition: opacity 0.5s;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -632,9 +567,6 @@ footer {
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);
 }
 
-section {
-    transition: opacity 0.5s;
-}
 
 section:hover {
     opacity: 0.98;
@@ -644,6 +576,114 @@ section:hover {
     color: #722e56;
     border-bottom: 2px solid #fcfcfc;
     padding-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* Галерея — сложная сетка с разными размерами */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+}
+
+.gallery-item {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Растягиваем некоторые элементы на несколько колонок/строк */
+.gallery-item-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+    
+}
+
+.gallery-item-3 {
+    grid-column: span 2;
+    
+}
+
+.gallery-item-5 {
+    grid-row: span 2;
+   
+}
+
+
+.page-layout {
+    display: grid;
+    grid-template-areas:
+        "body body"
+        "features features"
+        "gallery gallery";
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.body-section { grid-area: hero; }
+.features-section { grid-area: features; }
+.gallery-section { grid-area: gallery; }
+
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-areas:
+            "hero"
+            "features"
+            "popular"
+            "sidebar"
+            "gallery";
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    background-color: #3d566e;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+
+.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 10px;
+    gap: 15px;
+}
+
+.pinterest-item {
+    background-color: #3498db;
+    border-radius: 0px;
+    padding: 0px;
+    color: white;
+    grid-row-end: span 20;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 
