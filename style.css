@@ -48,19 +48,9 @@ body {
 .main{
 padding: 30px;
 
-
-
 }
 
-.df1{
-    padding: 30px;
-   
-}
-.s1{
-align-items: start;
-justify-content: start;
- text-align: center;  
-}
+
 
 
 
@@ -113,11 +103,19 @@ header {
 
 header .container {
     display: flex;
-    justify-content: space-between;   /* Логотип слева, меню справа */
-    align-items: center;              /* Вертикальное выравнивание по центру */
-    flex-wrap: wrap;                 /* При сужении экрана меню уйдёт вниз */
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+
 
 
 header a {
@@ -137,16 +135,35 @@ header > div > a:first-child {
 }
 
 /* Список навигации */
+/* Меню — горизонтальное на десктопе */
 nav ul {
     display: flex;
-    list-style: none;
     gap: 25px;
+    list-style: none;
     margin: 0;
     padding: 0;
-
     background: linear-gradient(135deg, #000000 0%, #582a45 100%);
-    
 }
+
+/* На телефонах и планшетах — вертикальное */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    nav ul li a {
+        display: block;
+        padding: 8px 0;
+        width: 100%;
+    }
+}
+
 
 nav ul li {
     color: white;
@@ -306,6 +323,25 @@ border-radius: 5px;            /* закруглённые углы */
     }
 
 
+/* На планшетах и десктопах: изображение слева, текст справа */
+@media (min-width: 768px) {
+    .product-card {
+        flex-direction: row;
+        align-items: center;
+    }
+    .product-card .card-img {
+        flex: 0 0 200px; /* фиксированная ширина */
+        height: 200px;
+    }
+    .product-card .card-content {
+        flex: 1;
+        padding: 20px;
+    }
+}
+
+
+
+
     
     /* Чтобы кнопка была внизу */
 .product-card .card-content {
@@ -322,11 +358,23 @@ border-radius: 5px;            /* закруглённые углы */
 
 /* Сетка преимуществ на Flexbox */
 .features-grid {
-     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
 }
+
+@media (min-width: 600px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 
 
 
@@ -384,6 +432,18 @@ footer .container {
     flex-wrap: wrap;
     gap: 30px;
 }
+
+@media (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-col {
+        width: 100%;
+    }
+}
+
 
 .footer-col {
     margin-bottom: 20px;
@@ -490,6 +550,43 @@ form {
     background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
 }
 
+/* Поля ввода занимают всю ширину */
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* На телефонах убираем отступы, делаем форму на всю ширину */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    form input,
+    form textarea,
+    form select {
+        font-size: 16px; /* важно: 16px чтобы не было зума на iOS */
+        padding: 12px 15px;
+    }
+    label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 10px;
+        border-radius: 0;
+    }
+}
+
+
+
 form div {
      margin-bottom: 20px;
     
@@ -589,36 +686,50 @@ section:hover {
 /* Галерея — сложная сетка с разными размерами */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 200px;
     gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .gallery-item {
-    
+    background: #884d72f1;
+    height: 150px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 40px;
+    transition: 0.3s;
 }
 
-/* Растягиваем некоторые элементы на несколько колонок/строк */
-.gallery-item-1 {
-    grid-column: span 2;
-    grid-row: span 2;
-    
+.gallery-item:hover {
+    transform: scale(1.02);
 }
 
-.gallery-item-3 {
-    grid-column: span 2;
-    
+.gallery img{
+    height: 200px;
+   width: 150%;
+   object-fit:cover;
+   border-radius:12px;
 }
 
-.gallery-item-5 {
-    grid-row: span 2;
-   
+/* Планшеты: 3 колонки */
+@media (min-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+/* Десктопы: 4 колонки */
+@media (min-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery-item {
+        height: 250px;
+    }
 }
 
 
@@ -684,6 +795,72 @@ section:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+}
+
+
+
+
+
+
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Для планшетов и телефонов (ширина ≤ 1024px) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Для телефонов (ширина ≤ 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .hero {
+        padding: 40px 0;
+    }
+    .hero h1 {
+        font-size: 24px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .container {
+        padding: 0 12px;
+    }
+}
+
+/* Для очень маленьких телефонов (ширина ≤ 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    .hero h1 {
+        font-size: 20px;
+    }
+    .hero p {
+        font-size: 14px;
+    }
+    .btn {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
 }
 
 
