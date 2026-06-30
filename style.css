@@ -1,6 +1,11 @@
+@font-face {
+    font-family: "Nunito";
+    src: url(fonts/Nunito-VariableFont_wght.ttf);
+}
+
 /* Общие стили для всего сайта */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 16px;
     color: #ffffff;           /* тёмно-серый текст */
     background-color: #884d72f1; /* белый фон */
@@ -10,6 +15,7 @@ body {
     text-align: center;
     justify-content: space-evenly;
     flex-direction: column;
+    font-family: "Nunito";
 
 
 }
@@ -25,6 +31,159 @@ body {
 .body .btn:hover {
     background-color: #ffffff;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+
+.slider-container {
+    text-align: center;
+   background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.slider-image-wrapper {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    
+}
+
+.slider-image-wrapper img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.slider-btn {
+    background: #582a45;
+    color: #000000;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.slider-btn:hover {
+    background: #ffffff;
+}
+
+.image-counter {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #000000;
+}
+
+
+
+.calculator-container {
+    background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(112, 51, 87, 0.986);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+button {
+    background: #ffffff;
+    color: #53214b;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+button:hover {
+    background: #ffffff;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #582a45;
+    border-radius: 8px;
+}
+
+.result p {
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+#finalPrice {
+    font-weight: bold;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+#discountAmount {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* Основной макет главной страницы через grid-areas */
 .page-layout {
@@ -312,7 +471,7 @@ border-radius: 5px;            /* закруглённые углы */
     .product-card {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 30%;
          display: flex;
     flex-direction: column;
     background-color: #ffffff;
@@ -321,6 +480,125 @@ border-radius: 5px;            /* закруглённые углы */
     overflow: hidden;
     transition: box-shadow 0.2s;
     }
+
+
+
+    /* Контейнер карточки */
+.flip-card {
+    background-color: transparent;
+    height: 380px;
+    perspective: 1000px;  /* Создаёт 3D-эффект */
+    cursor: pointer;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    
+   
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Внутренний блок, который вращается */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Переворот при наведении (CSS-версия) */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Если используется класс flipped (для клика) */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Передняя и задняя стороны карточки */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;  /* Скрываем обратную сторону */
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.flip-card-front {
+    background: rgb(255, 255, 255);
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #aa6e94f1 0%, #582a45 100%);
+    color: rgb(255, 255, 255);
+    transform: rotateY(180deg);
+}
+
+.flip-card-icon {
+    font-size: 64px;
+    margin-bottom: 15px;
+}
+
+.flip-card-front h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.flip-card-front p {
+    color: #333;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.flip-card-back h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.flip-card-back p {
+    font-size: 15px;
+    color: #bdc3c7;
+    margin: 5px 0;
+}
+
+.flip-card-btn {
+    display: inline-block;
+    background: #000000;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.flip-card-btn:hover {
+    background: #582a45;
+}
+
+
+
+
+
+
+
 
 
 /* На планшетах и десктопах: изображение слева, текст справа */
@@ -686,8 +964,11 @@ section:hover {
 /* Галерея — сложная сетка с разными размерами */
 .gallery-grid {
     display: grid;
-    gap: 15px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+
 }
 
 .gallery-item {
@@ -698,8 +979,19 @@ section:hover {
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    transition: 0.3s;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    font-weight: bold;
+    color: white;
+    transform: translateY(40px);
+   
+
 }
+
+.gallery-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .gallery-item:hover {
     transform: scale(1.02);

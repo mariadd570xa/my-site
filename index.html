@@ -18,9 +18,14 @@
                     <li><a  href="catalog.html" button type="button" class="btn btn-secondary">Каталог </button></a></li>
                     <li><a  href="contacts.html" button type="button" class="btn btn-secondary">Контакты </button></a></li>
                     <li><a  href="feedback.html" button type="button" class="btn btn-secondary">Обратная связь </button></a></li>
+                    <li><a  href="signup.html" button type="button" class="btn btn-secondary">Регистрация </button></a></li>
+                    <li><a  href="profile.html" button type="button" class="btn btn-secondary">Личный кабинет</button></a></li>
                 </ul>
             </nav>
         </div>
+
+
+        
     </header>
 
     <main>
@@ -59,19 +64,48 @@
                     </div>
                 </div>
             </section>
+
+            <section>
+
+                <div class="slider-container">
+                    <h2>Рабочее место</h2>
+                    <div class="slider">
+                        <button class="slider-btn prev-btn" id="prevBtn">❮</button>
+                        <div class="slider-image-wrapper">
+                            <img src="" alt="Изображение 1" id="sliderImage">
+                        </div>
+                        <button class="slider-btn next-btn" id="nextBtn">❯</button>
+                    </div>
+                    <p class="image-counter" id="imageCounter">1 / 5</p>
+                </div>
+            </section>
+
     
 
         </section>
 
         <section class="section container">
-            <h1> Популярно в этом месяце</h1>
+            <h1> Наш мерч </h1>
             <div class="cards">
-            <div class="card"><img src="img/загрузка.jpg"><h3>Реализм </h3><p> Цена: от 12 000 ₽.</p>Изображение максимально приближено к реальному объекту<p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
-            <div class="card"><img src="img/5.jpg"><h3>Леттеринг</h3><p>Цена: от 2000 ₽.</p>Татуировки из слов или фраз, которые образуют изображение. <p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
-            <div class="card"><img src="img/7.jpg"><h3>Мини-тату</h3><p>Цена: от 2000 ₽.</p>Небольшие татуировки, размер которых часто не превышает 5 см.<p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
-            
+            <div class="card"><img src="img/фут1.png"><h3>Футболки </h3><p> Цена: 1000 ₽.</p><p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Перейти</a></div>
+            <div class="card"><img src="img/шопер 1.png"><h3>Шоперы</h3><p>Цена: 1500 ₽.</p><p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Перейти</a></div>
+            <div class="card"><img src="img/брелок.png"><h3>Значки</h3><p>Цена: 500 ₽.</p><p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Перейти</a></div>
+        </section>
 
-            
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Галерея работ</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" > <img src="img/8.jpg" alt=""></div> 
+                    <div class="gallery-item"> <img src="img/9.jpg" alt=""></div>
+                    <div class="gallery-item"> <img src="img/11.jpg" alt=""></div>
+                    <div class="gallery-item"><img src="img/12.jpg" alt=""></div>
+                    <div class="gallery-item"><img src="img/13.jpg" alt=""></div>
+                    <div class="gallery-item"><img src="img/14.jpg" alt=""></div>
+                    <div class="gallery-item"><img src="img/111.jpg" alt=""></div>
+                    <div class="gallery-item"><img src="img/15.jpg" alt=""></div>
+                </div>
+            </div>
         </section>
 
         <!-- Форма для добавления отзыва -->
@@ -92,30 +126,11 @@
                 </div>
                 <button type="submit">Отправить</button>
             </form>
-        </section>
 
         </section>
         
 
     </main>
-
-    
-
-<section class="gallery">
-    <div class="container">
-        <h2 class="section-title">Галерея работ</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" > <img src="img/8.jpg" alt=""></div> 
-            <div class="gallery-item"> <img src="img/9.jpg" alt=""></div>
-            <div class="gallery-item"> <img src="img/11.jpg" alt=""></div>
-            <div class="gallery-item"><img src="img/12.jpg" alt=""></div>
-            <div class="gallery-item"><img src="img/13.jpg" alt=""></div>
-            <div class="gallery-item"><img src="img/14.jpg" alt=""></div>
-        </div>
-    </div>
-</section>
-
-
 
     <footer>
         <div>
@@ -149,5 +164,6 @@
 </div>
 
     </footer>
+    <script src="slider.js"></script>
 </body>
 </html>

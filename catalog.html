@@ -18,6 +18,8 @@
                     <li><a  href="catalog.html" button type="button" class="btn btn-outline-primary">Каталог </button></a></li>
                     <li><a  href="contacts.html" button type="button" class="btn btn-outline-primary">Контакты </button></a></li>
                     <li><a  href="feedback.html" button type="button" class="btn btn-outline-primary">Обратная связь </button></a></li>
+                    <li><a  href="signup.html" button type="button" class="btn btn-secondary">Регистрация </button></a></li>
+                    <li><a  href="profile.html" button type="button" class="btn btn-secondary">Личный кабинет</button></a></li>
             </nav>
         </div>
     </header>
@@ -38,15 +40,62 @@
 <div class="card"><img src="img/5.jpg"><h3>Леттеринг</h3><p>Цена: от 2000 ₽.</p>Татуировки из слов или фраз, которые образуют изображение. <p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
 <div class="card"><img src="img/6.jpg"><h3>Дотворк (Dotwork)</h3><p>Цена: от 10 000 ₽.</p>Техника создания рисунка с помощью множества мелких точек.В<p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
 <div class="card"><img src="img/7.jpg"><h3>Мини-тату</h3><p>Цена: от 2000 ₽.</p>Небольшие татуировки, размер которых часто не превышает 5 см.<p></p><a href="areenda.html" class="btn btn-outline-dark" style="margin: 50px;">Подробнее</a></div>
+<section>
+<div class="calculator-container">
+    <h2>Калькулятор скидки</h2>
+    <div class="calculator">
+        <div class="input-group">
+            <label for="originalPrice">Цена (₽)</label>
+            <input type="number" id="originalPrice" placeholder="1000" min="0">
+        </div>
+        <div class="input-group">
+            <label for="discountPercent">Скидка (%)</label>
+            <input type="number" id="discountPercent" placeholder="10" min="0" max="100">
+        </div>
+        <button id="calculateBtn">Рассчитать</button>
+        <div class="result" id="result">
+            <p>Итоговая цена: <span id="finalPrice">0</span> ₽</p>
+            <p>Сумма скидки: <span id="discountAmount">0</span> ₽</p>
+        </div>
+    </div>
+</div>
+</section>
 
 
-
-
-
-
+<section>
+    <h2></h2>
+        <div class="card-grid">
+            <!-- Карточка 1 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="flip-card-icon">🏷️</div>
+                        <h3>Скидки</h3>
+                        <p>Нажмите или наведите</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Как получить скидку?</h3>
+                        <p>Спросите администратора при записи.</p>
+                        <p>Скидка для новых клиентов.</p>
+                        <p>За активность в соцсетях.</p>
+                        <a href="contacts.html" class="flip-card-btn">Подробнее</a>
+                    </div>
+                </div>
             </div>
+    
+
+    
+           
+    
+        <script>
+            // Дополнительная анимация — карточки появляются с задержкой
+            document.querySelectorAll('.flip-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+        </script>
         </section>
     </main>
+
 
     <footer>
         <div>
@@ -80,5 +129,6 @@
         </div>
 
     </footer>
+    <script src="discount.js"></script>
 </body>
 </html>
